@@ -1,0 +1,5 @@
+bin/
+version/
+pkg/
+src/
+.DS_Store
