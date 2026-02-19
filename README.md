@@ -1,42 +1,87 @@
 # Go Local Install
 
-Скрипт для локальной установки Go и golangci-lint без прав суперпользователя.
+Script for local installation of Go and golangci-lint without root privileges.
+
+## Structure
+
+```
+go/
+├── update.sh          # installation script
+├── bin/               # symlinks to binaries (add to $PATH)
+└── version/           # downloaded archives and extracted versions
+```
+
+## Usage
+
+```sh
+./update.sh
+```
+
+The script:
+1. Detects OS and architecture
+2. Downloads the Go archive for the specified version (if not already downloaded)
+3. Extracts to `version/<VERSION>/`
+4. Creates symlinks in `bin/`
+5. Installs golangci-lint (if not present)
+
+## PATH setup
+
+```sh
+export PATH="$HOME/go/bin:$PATH"
+```
+
+## Changing Go version
+
+Edit `VERSION` at the top of `update.sh` and re-run the script.
+
+## Requirements
+
+- curl
+- tar
+- sh / bash / zsh
+- Linux (x86_64, arm64) or macOS (x86_64, arm64)
+
+---
+
+# Go Local Install (UA)
+
+Скрипт для локального встановлення Go та golangci-lint без прав суперкористувача.
 
 ## Структура
 
 ```
 go/
-├── update.sh          # скрипт установки
-├── bin/               # симлинки на бинарники (добавить в $PATH)
-└── version/           # скачанные архивы и распакованные версии
+├── update.sh          # скрипт встановлення
+├── bin/               # симлінки на бінарники (додати до $PATH)
+└── version/           # завантажені архіви та розпаковані версії
 ```
 
-## Использование
+## Використання
 
 ```sh
 ./update.sh
 ```
 
 Скрипт:
-1. Определяет ОС и архитектуру
-2. Скачивает архив Go указанной версии (если ещё не скачан)
-3. Распаковывает в `version/<VERSION>/`
-4. Создаёт симлинки в `bin/`
-5. Устанавливает golangci-lint (если отсутствует)
+1. Визначає ОС та архітектуру
+2. Завантажує архів Go вказаної версії (якщо ще не завантажений)
+3. Розпаковує в `version/<VERSION>/`
+4. Створює симлінки в `bin/`
+5. Встановлює golangci-lint (якщо відсутній)
 
-## Настройка PATH
+## Налаштування PATH
 
 ```sh
 export PATH="$HOME/go/bin:$PATH"
 ```
 
-## Смена версии Go
+## Зміна версії Go
 
-Отредактировать `VERSION` в начале `update.sh` и перезапустить скрипт.
+Відредагувати `VERSION` на початку `update.sh` та перезапустити скрипт.
 
-## Требования
+## Вимоги
 
 - curl
 - tar
 - sh / bash / zsh
-- Linux (x86_64, arm64) или macOS (x86_64, arm64)
+- Linux (x86_64, arm64) або macOS (x86_64, arm64)
